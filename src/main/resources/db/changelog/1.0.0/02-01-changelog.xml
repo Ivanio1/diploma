@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.22.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1735824495831-3" author="isobolev (generated)">
+        <createTable tableName="site_image">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_site_image"/>
+            </column>
+            <column name="original_file_name" type="VARCHAR(255)"/>
+            <column name="size" type="BIGINT"/>
+            <column name="content_type" type="VARCHAR(255)"/>
+            <column name="bytes" type="bigint"/>
+            <column name="appearance_settings_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1735824495831-4" author="isobolev (generated)">
+        <addColumn tableName="appearance_settings">
+            <column name="image_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1735824495831-5" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="image_id" baseTableName="appearance_settings"
+                                 constraintName="FK_APPEARANCE_SETTINGS_ON_IMAGE" referencedColumnNames="id"
+                                 referencedTableName="site_image"/>
+    </changeSet>
+    <changeSet id="1735824495831-6" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="appearance_settings_id" baseTableName="site_image"
+                                 constraintName="FK_SITE_IMAGE_ON_APPEARANCE_SETTINGS" referencedColumnNames="id"
+                                 referencedTableName="appearance_settings"/>
+    </changeSet>
+    <changeSet id="1735824495831-1" author="isobolev (generated)">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="site_name" tableName="appearance_settings"
+                              validate="true"/>
+    </changeSet>
+    <changeSet id="1735824495831-2" author="isobolev (generated)">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="title_color" tableName="appearance_settings"
+                              validate="true"/>
+    </changeSet>
+    <changeSet id="1735826394795-1" author="isobolev (generated)">
+        <addColumn tableName="appearance_settings">
+            <column name="text_color" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1735832531301-2"
+               author="isobolev (generated)">
+        <dropForeignKeyConstraint baseTableName="appearance_settings"
+                                  constraintName="fk_appearance_settings_on_image"/>
+    </changeSet>
+    <changeSet id="1735832531301-3"
+               author="isobolev (generated)">
+        <dropForeignKeyConstraint baseTableName="site_image"
+                                  constraintName="fk_site_image_on_appearance_settings"/>
+    </changeSet>
+    <changeSet id="1735832531301-1"
+               author="isobolev (generated)">
+        <addColumn tableName="appearance_settings">
+            <column name="image"
+                    type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1735832531301-4"
+               author="isobolev (generated)">
+        <dropTable cascadeConstraints="true"
+                   tableName="site_image"/>
+    </changeSet>
+    <changeSet id="1735832531301-5"
+               author="isobolev (generated)">
+        <dropColumn columnName="image_id"
+                    tableName="appearance_settings"/>
+    </changeSet>
+
+
+</databaseChangeLog>

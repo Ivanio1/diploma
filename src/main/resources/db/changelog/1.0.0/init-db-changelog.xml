@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.22.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1734777895823-1" author="isobolev (generated)">
+        <createTable tableName="administrator">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_administrator"/>
+            </column>
+            <column name="employee_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-2" author="isobolev (generated)">
+        <createTable tableName="callcenterworker">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_callcenterworker"/>
+            </column>
+            <column name="working_time_start" type="TIME"/>
+            <column name="working_time_end" type="TIME"/>
+            <column name="employee_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-3" author="isobolev (generated)">
+        <createTable tableName="car">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_car"/>
+            </column>
+            <column name="brand" type="VARCHAR(255)"/>
+            <column name="model" type="VARCHAR(255)"/>
+            <column name="creation_date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-4" author="isobolev (generated)">
+        <createTable tableName="detail">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_detail"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="stock" type="INT"/>
+            <column name="storagestock" type="INT"/>
+            <column name="price" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-5" author="isobolev (generated)">
+        <createTable tableName="detailprovider">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_detailprovider"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="contact" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-6" author="isobolev (generated)">
+        <createTable tableName="detailprovider_detail">
+            <column name="detail_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_detailprovider_detail"/>
+            </column>
+            <column name="detailprovider_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_detailprovider_detail"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-7" author="isobolev (generated)">
+        <createTable tableName="employee">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_employee"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="surname" type="VARCHAR(255)"/>
+            <column name="snils" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+            <column name="operator_id" type="BIGINT"/>
+            <column name="worker_id" type="BIGINT"/>
+            <column name="manufacturer_id" type="BIGINT"/>
+            <column name="administrator_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-8" author="isobolev (generated)">
+        <createTable tableName="employee_sto">
+            <column name="employee_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_employee_sto"/>
+            </column>
+            <column name="sto_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_employee_sto"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-9" author="isobolev (generated)">
+        <createTable tableName="images">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_images"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="original_file_name" type="VARCHAR(255)"/>
+            <column name="size" type="BIGINT"/>
+            <column name="content_type" type="VARCHAR(255)"/>
+            <column name="preview_image" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bytes" type="bigint"/>
+            <column name="offer_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-10" author="isobolev (generated)">
+        <createTable tableName="manufacturer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_manufacturer"/>
+            </column>
+            <column name="detail_specialization" type="VARCHAR(255)"/>
+            <column name="employee_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-11" author="isobolev (generated)">
+        <createTable tableName="offer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offer"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="price" type="INT"/>
+            <column name="preview_image_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-12" author="isobolev (generated)">
+        <createTable tableName="offer_detail">
+            <column name="detail_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offer_detail"/>
+            </column>
+            <column name="offer_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offer_detail"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-13" author="isobolev (generated)">
+        <createTable tableName="offer_purchase">
+            <column name="offer_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offer_purchase"/>
+            </column>
+            <column name="purchase_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offer_purchase"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-14" author="isobolev (generated)">
+        <createTable tableName="offer_tool">
+            <column name="offer_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offer_tool"/>
+            </column>
+            <column name="tool_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_offer_tool"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-15" author="isobolev (generated)">
+        <createTable tableName="purchase">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_purchase"/>
+            </column>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="createdat" type="DATETIME"/>
+            <column name="closedat" type="DATETIME"/>
+            <column name="sto_name" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+            <column name="worker_id" type="BIGINT"/>
+            <column name="car_id" type="BIGINT"/>
+            <column name="administrator_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-16" author="isobolev (generated)">
+        <createTable tableName="question">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_question"/>
+            </column>
+            <column name="question_text" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-17" author="isobolev (generated)">
+        <createTable tableName="review">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_review"/>
+            </column>
+            <column name="review_text" type="VARCHAR(255)"/>
+            <column name="rating" type="INT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-18" author="isobolev (generated)">
+        <createTable tableName="review_offer">
+            <column name="offer_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_review_offer"/>
+            </column>
+            <column name="review_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_review_offer"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-19" author="isobolev (generated)">
+        <createTable tableName="sto">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sto"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-20" author="isobolev (generated)">
+        <createTable tableName="tool">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tool"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="stock" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-21" author="isobolev (generated)">
+        <createTable tableName="user_car">
+            <column name="car_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_car"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_car"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-22" author="isobolev (generated)">
+        <createTable tableName="user_role">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roles" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-23" author="isobolev (generated)">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="phone_number" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="surname" type="VARCHAR(255)"/>
+            <column name="active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(1000)"/>
+            <column name="employee_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-24" author="isobolev (generated)">
+        <createTable tableName="users_questions">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users_questions"/>
+            </column>
+            <column name="questions_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users_questions"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-25" author="isobolev (generated)">
+        <createTable tableName="worker">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_worker"/>
+            </column>
+            <column name="specialization" type="VARCHAR(255)"/>
+            <column name="employee_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-26" author="isobolev (generated)">
+        <createTable tableName="worker_worker_requests">
+            <column name="worker_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_worker_workerrequests"/>
+            </column>
+            <column name="worker_requests_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_worker_workerrequests"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-27" author="isobolev (generated)">
+        <createTable tableName="workerrequest">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_workerrequest"/>
+            </column>
+            <column name="request_text" type="VARCHAR(255)"/>
+            <column name="worker_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1734777895823-28" author="isobolev (generated)">
+        <addUniqueConstraint columnNames="name" constraintName="uc_detailprovider_name" tableName="detailprovider"/>
+    </changeSet>
+    <changeSet id="1734777895823-29" author="isobolev (generated)">
+        <addUniqueConstraint columnNames="name" constraintName="uc_offer_name" tableName="offer"/>
+    </changeSet>
+    <changeSet id="1734777895823-30" author="isobolev (generated)">
+        <addUniqueConstraint columnNames="name" constraintName="uc_sto_name" tableName="sto"/>
+    </changeSet>
+    <changeSet id="1734777895823-31" author="isobolev (generated)">
+        <addUniqueConstraint columnNames="email" constraintName="uc_users_email" tableName="users"/>
+    </changeSet>
+    <changeSet id="1734777895823-32" author="isobolev (generated)">
+        <addUniqueConstraint columnNames="questions_id" constraintName="uc_users_questions_questions"
+                             tableName="users_questions"/>
+    </changeSet>
+    <changeSet id="1734777895823-33" author="isobolev (generated)">
+        <addUniqueConstraint columnNames="worker_requests_id" constraintName="uc_worker_worker_requests_workerrequests"
+                             tableName="worker_worker_requests"/>
+    </changeSet>
+    <changeSet id="1734777895823-34" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="administrator"
+                                 constraintName="FK_ADMINISTRATOR_ON_EMPLOYEE" referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+    </changeSet>
+    <changeSet id="1734777895823-35" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="callcenterworker"
+                                 constraintName="FK_CALLCENTERWORKER_ON_EMPLOYEE" referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+    </changeSet>
+    <changeSet id="1734777895823-36" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="administrator_id" baseTableName="employee"
+                                 constraintName="FK_EMPLOYEE_ON_ADMINISTRATOR" referencedColumnNames="id"
+                                 referencedTableName="administrator"/>
+    </changeSet>
+    <changeSet id="1734777895823-37" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="manufacturer_id" baseTableName="employee"
+                                 constraintName="FK_EMPLOYEE_ON_MANUFACTURER" referencedColumnNames="id"
+                                 referencedTableName="manufacturer"/>
+    </changeSet>
+    <changeSet id="1734777895823-38" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="operator_id" baseTableName="employee"
+                                 constraintName="FK_EMPLOYEE_ON_OPERATOR" referencedColumnNames="id"
+                                 referencedTableName="callcenterworker"/>
+    </changeSet>
+    <changeSet id="1734777895823-39" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="employee" constraintName="FK_EMPLOYEE_ON_USER"
+                                 onDelete="CASCADE" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1734777895823-40" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="worker_id" baseTableName="employee"
+                                 constraintName="FK_EMPLOYEE_ON_WORKER" referencedColumnNames="id"
+                                 referencedTableName="worker"/>
+    </changeSet>
+    <changeSet id="1734777895823-41" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="offer_id" baseTableName="images" constraintName="FK_IMAGES_ON_OFFER"
+                                 referencedColumnNames="id" referencedTableName="offer"/>
+    </changeSet>
+    <changeSet id="1734777895823-42" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="manufacturer"
+                                 constraintName="FK_MANUFACTURER_ON_EMPLOYEE" referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+    </changeSet>
+    <changeSet id="1734777895823-43" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="administrator_id" baseTableName="purchase"
+                                 constraintName="FK_PURCHASE_ON_ADMINISTRATOR" referencedColumnNames="id"
+                                 referencedTableName="administrator"/>
+    </changeSet>
+    <changeSet id="1734777895823-44" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="car_id" baseTableName="purchase" constraintName="FK_PURCHASE_ON_CAR"
+                                 referencedColumnNames="id" referencedTableName="car"/>
+    </changeSet>
+    <changeSet id="1734777895823-45" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="purchase" constraintName="FK_PURCHASE_ON_USER"
+                                 onDelete="CASCADE" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1734777895823-46" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="worker_id" baseTableName="purchase"
+                                 constraintName="FK_PURCHASE_ON_WORKER" referencedColumnNames="id"
+                                 referencedTableName="worker"/>
+    </changeSet>
+    <changeSet id="1734777895823-47" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="question" constraintName="FK_QUESTION_ON_USER"
+                                 onDelete="CASCADE" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1734777895823-48" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="review" constraintName="FK_REVIEW_ON_USER"
+                                 onDelete="CASCADE" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1734777895823-49" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="users"
+                                 constraintName="FK_USERS_ON_EMPLOYEE" referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+    </changeSet>
+    <changeSet id="1734777895823-50" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="worker_id" baseTableName="workerrequest"
+                                 constraintName="FK_WORKERREQUEST_ON_WORKER" onDelete="CASCADE"
+                                 referencedColumnNames="id" referencedTableName="worker"/>
+    </changeSet>
+    <changeSet id="1734777895823-51" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="worker"
+                                 constraintName="FK_WORKER_ON_EMPLOYEE" referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+    </changeSet>
+    <changeSet id="1734777895823-52" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="detail_id" baseTableName="detailprovider_detail"
+                                 constraintName="fk_detdet_on_detail" referencedColumnNames="id"
+                                 referencedTableName="detail"/>
+    </changeSet>
+    <changeSet id="1734777895823-53" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="detailprovider_id" baseTableName="detailprovider_detail"
+                                 constraintName="fk_detdet_on_detail_provider" referencedColumnNames="id"
+                                 referencedTableName="detailprovider"/>
+    </changeSet>
+    <changeSet id="1734777895823-54" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="employee_sto"
+                                 constraintName="fk_empsto_on_employee" referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+    </changeSet>
+    <changeSet id="1734777895823-55" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="sto_id" baseTableName="employee_sto" constraintName="fk_empsto_on_sto"
+                                 referencedColumnNames="id" referencedTableName="sto"/>
+    </changeSet>
+    <changeSet id="1734777895823-56" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="detail_id" baseTableName="offer_detail"
+                                 constraintName="fk_offdet_on_detail" referencedColumnNames="id"
+                                 referencedTableName="detail"/>
+    </changeSet>
+    <changeSet id="1734777895823-57" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="offer_id" baseTableName="offer_detail"
+                                 constraintName="fk_offdet_on_offer" referencedColumnNames="id"
+                                 referencedTableName="offer"/>
+    </changeSet>
+    <changeSet id="1734777895823-58" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="offer_id" baseTableName="offer_purchase"
+                                 constraintName="fk_offpur_on_offer" referencedColumnNames="id"
+                                 referencedTableName="offer"/>
+    </changeSet>
+    <changeSet id="1734777895823-59" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="purchase_id" baseTableName="offer_purchase"
+                                 constraintName="fk_offpur_on_purchase" referencedColumnNames="id"
+                                 referencedTableName="purchase"/>
+    </changeSet>
+    <changeSet id="1734777895823-60" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="offer_id" baseTableName="offer_tool"
+                                 constraintName="fk_offtoo_on_offer" referencedColumnNames="id"
+                                 referencedTableName="offer"/>
+    </changeSet>
+    <changeSet id="1734777895823-61" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="tool_id" baseTableName="offer_tool" constraintName="fk_offtoo_on_tool"
+                                 referencedColumnNames="id" referencedTableName="tool"/>
+    </changeSet>
+    <changeSet id="1734777895823-62" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="offer_id" baseTableName="review_offer"
+                                 constraintName="fk_revoff_on_offer" referencedColumnNames="id"
+                                 referencedTableName="offer"/>
+    </changeSet>
+    <changeSet id="1734777895823-63" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="review_id" baseTableName="review_offer"
+                                 constraintName="fk_revoff_on_review" referencedColumnNames="id"
+                                 referencedTableName="review"/>
+    </changeSet>
+    <changeSet id="1734777895823-64" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="questions_id" baseTableName="users_questions"
+                                 constraintName="fk_useque_on_question" referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+    <changeSet id="1734777895823-65" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_questions"
+                                 constraintName="fk_useque_on_user" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1734777895823-66" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="car_id" baseTableName="user_car" constraintName="fk_user_car_on_car"
+                                 referencedColumnNames="id" referencedTableName="car"/>
+    </changeSet>
+    <changeSet id="1734777895823-67" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_car" constraintName="fk_user_car_on_user"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1734777895823-68" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_role"
+                                 constraintName="fk_user_role_on_user" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1734777895823-69" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="worker_id" baseTableName="worker_worker_requests"
+                                 constraintName="fk_worworreq_on_worker" referencedColumnNames="id"
+                                 referencedTableName="worker"/>
+    </changeSet>
+    <changeSet id="1734777895823-70" author="isobolev (generated)">
+        <addForeignKeyConstraint baseColumnNames="worker_requests_id" baseTableName="worker_worker_requests"
+                                 constraintName="fk_worworreq_on_worker_request" referencedColumnNames="id"
+                                 referencedTableName="workerrequest"/>
+    </changeSet>
+
+</databaseChangeLog>

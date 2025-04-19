@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.22.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="2" author="isobolev">
+        <insert tableName="users">
+            <column name="id" value="2"/>
+            <column name="email" value="user@user.ru"/>
+            <column name="phone_number" value="+79505539553"/>
+            <column name="name" value="user"/>
+            <column name="surname" value="user"/>
+            <column name="active" value="true"/>
+            <column name="password" value="$2a$08$uVZ.GtznAey7T/4gBCUMdewf.Cb99sJM4P4SYUZamm/Jwgg87m35m"/>
+            <column name="employee_id" value="NULL"/>
+        </insert>
+
+        <insert tableName="user_role">
+            <column name="user_id" value="2"/>
+            <column name="roles" value="ROLE_USER"/>
+        </insert>
+
+        <sql>
+        <![CDATA[
+            SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));
+            ]]>
+        </sql>
+    </changeSet>
+</databaseChangeLog>
